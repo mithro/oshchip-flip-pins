@@ -1,6 +1,7 @@
 # Flip-Pins pages from oshchip.org (archival mirror)
 
-Live copy: **<https://mithro.github.io/oshchip-flip-pins/>**
+Live copy: **<https://mith.ro/oshchip-flip-pins/>** (also reachable as
+<https://mithro.github.io/oshchip-flip-pins/>, which redirects there)
 
 This repository is an archival mirror of the **Flip-Pins** pages from
 [oshchip.org](http://oshchip.org/), Philip Freidin's OSHChip site. The site
