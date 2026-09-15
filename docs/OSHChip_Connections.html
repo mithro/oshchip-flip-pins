@@ -1,0 +1,399 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>OSHChip Connections &#8211; oshchip.org</title>
+<meta name="description" content="Connecting CMSIS-DAP to OSHChip">
+<meta name="keywords" content="OSHChip, nRF51822, BLE, Bluetooth Low Energy, Bluetooth Smart">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="OSHChip Connections">
+<meta name="twitter:description" content="Connecting CMSIS-DAP to OSHChip">
+<meta name="twitter:site" content="@PhilipFreidin">
+<meta name="twitter:creator" content="@PhilipFreidin">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://oshchip.org/images/header.jpg">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OSHChip Connections">
+<meta property="og:description" content="Connecting CMSIS-DAP to OSHChip">
+<meta property="og:url" content="http://oshchip.org/docs/OSHChip_Connections">
+<meta property="og:site_name" content="oshchip.org">
+
+
+
+
+
+
+
+<link rel="canonical" href="http://oshchip.org/docs/OSHChip_Connections">
+<link href="http://oshchip.org/feed.xml" type="application/atom+xml" rel="alternate" title="oshchip.org Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://oshchip.org/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://oshchip.org/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://oshchip.org/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://oshchip.org/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://oshchip.org/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://oshchip.org/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://oshchip.org/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://oshchip.org/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://oshchip.org/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://oshchip.org/images/apple-touch-icon-144x144-precomposed.png">
+<link rel="canonical" href="http://oshchip.org/docs/OSHChip_Connections" />
+
+</head>
+
+<body class="page">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://oshchip.org">oshchip.org</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+					    
+					    <li><a href="http://oshchip.org/products/" >Products</a></li>
+					  
+					    
+					    <li><a href="http://oshchip.org/docs/" >Docs</a></li>
+					  
+					    
+					    <li><a href="http://oshchip.org/chipdesign/" >Chip Design</a></li>
+					  
+					    
+					    <li><a href="https://www.tindie.com/stores/OSHChip/" target="_blank">Buy</a></li>
+					  
+					    
+					    <li><a href="http://oshchip.org/faq/" >FAQ</a></li>
+					  
+					    
+					    <li><a href="http://oshchip.org/about/" >About</a></li>
+					  
+            <!-- google search -->
+            <li> 
+              <form style="display: inline;" onsubmit="my_search_google()" >
+                <input style="width: 200px;" 
+                       type="text" placeholder="Search" 
+                       id="my-google-search"/>
+              </form>
+            </li>
+        </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+  <div class="image-wrap">
+  <img src=
+    
+      "http://oshchip.org/images/header.jpg"
+    
+  alt="OSHChip Connections feature image">
+  
+  </div><!-- /.image-wrap -->
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+
+	<img src="http://oshchip.org/images/OSHChip_Avatar.jpg" class="bio-photo" alt="OSHChip bio photo">
+
+<h3>OSHChip</h3>
+<p>32 bit Cortex-M0 with 256 KB Flash, 32KB RAM, and Bluetooth LE radio</p>
+<a href="mailto:philip@oshchip.org" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
+<a href="http://twitter.com/PhilipFreidin" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+
+
+
+
+
+<a href="http://github.com/oshchip" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+
+
+
+
+
+
+
+
+
+    <br><br>
+    <h3 id="news">News</h3>
+
+<ul>
+  <li><strong>Monthly News Letter</strong> <a href="http://goo.gl/forms/K2Qlvjiobx" target="_blank">Newsletter Signup</a></li>
+  <li>Due to SPAM and website Hijack, the Forum has been disabled. If you need help please use the above email</li>
+  <li>Many OSHChip users have asked where to buy the IC pins used in OSHChip. They are now a <a href="http://oshchip.org/products/Flip-Pins_Product.html">product</a></li>
+</ul>
+
+  </div>
+  <article class="page">
+    <h1>OSHChip Connections</h1>
+    <div class="article-wrap">
+      <p>For programming and debugging of OSHChips, a standard SWD cable connects
+the programmer/debugger to the connector on the top of the OSHChip.</p>
+
+<p>The cable is a 10 wire ribbon cable, with a 0.050” pitch 2 by 5 pin
+female keyed IDC connector at each end. The cable is typically 4 to 6 inches
+long and has a red stripe on the wire that carries the signal between pin 1 of
+each connector.</p>
+
+<p><img src="/images/Labeled_Cable.png" alt="SWD Ribbon Cable" /></p>
+
+<p>If you already have an SWD programmer from another vendor, provided
+you also have a programming cable with the 0.050” pitch
+2 by 5 IDC connector on the end, you can get by without the
+adapter. See below for details.</p>
+
+<p>The alignment key on the programming cable at the programmer end (right
+end in the picture above) must match the alignment mark on the printed
+circuit board. See the following picture.</p>
+
+<center>
+<img src="/images/OSHChip_CMSIS_DAP_J2.jpg" width="500" /><br />
+</center>
+
+<p>Looking at the connector from above, with the alignment key on the
+left side, the pins are numbered:</p>
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;width:45px}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:2px 2px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;text-align:right}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+
+<table class="tg">
+  <tr>
+    <td class="tg-031e">1</td>
+    <td class="tg-031e">2</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">3</td>
+    <td class="tg-031e">4</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">5</td>
+    <td class="tg-yw4l">6</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">7</td>
+    <td class="tg-yw4l">8</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">9</td>
+    <td class="tg-yw4l">10</td>
+  </tr>
+</table>
+
+<p>The required signals are on pins 1, 2, 3, and 4, which are in
+a 2 by 2 group at the red stripe end of the connector.
+This matches the 2 by 2 connector on the top of OSHChip.</p>
+
+<p>ARM documents both old and new programming/debugging connectors
+in this documnet <a href="http://infocenter.arm.com/help/topic/com.arm.doc.faqs/attached/13634/cortex_debug_connectors.pdf">cortex_debug_connectors.pdf</a>  . 
+The OSHChip_CMSIS_DAP V1.0 Programmer/Debugger connector is shown
+on the top of the second page of that document, with the only
+signals implemented being pins 1 through 4. Here is the diagram from the ARM document:</p>
+
+<p><img src="/images/cortex_debug_header.png" width="200" /><br /></p>
+
+<h2 id="serial-connector-j5">Serial Connector J5</h2>
+
+<p>See <a href="OSHChip_CMSIS_DAP_V1.0_Serial_Data_Interface.html">Connecting and using the serial data interface</a></p>
+
+<h2 id="programming-voltages-and-connector-j1">Programming voltages and Connector J1</h2>
+
+<p>OSHChip V1.0 can operate from 1.8 V to 3.6V . Typically 3.3V is used,
+and 3.3V to 3.6V is a requirement if the on-board LEDs are used.</p>
+
+<p>The OSHChip_CMSIS_DAP V1.0 Programmer/Debugger is powered by the USB
+cable, and has an internal regulator for 3.3V .</p>
+
+<h4 id="if-oshchip-is-powered-from-25v-to-36v-but-not-33v">If OSHChip is powered from 2.5V to 3.6V but not 3.3V</h4>
+
+<ul>
+  <li>OSHChip can be left connected to the rest of the target system</li>
+  <li>J1 must <strong>not</strong> have the jumper installed, because the target system
+and the programmer power supplies are at different voltages</li>
+  <li>Both programming and debugging can be performed</li>
+</ul>
+
+<h4 id="if-oshchip-is-powered-at-33v">If OSHChip is powered at 3.3V</h4>
+
+<ul>
+  <li>OSHChip can be left connected to the rest of the target system</li>
+  <li>J1 may have the jumper installed, but it is not necessary</li>
+  <li>Both programming and debugging can be performed</li>
+</ul>
+
+<h4 id="if-oshchip-is-powered-from-18v-to-24v">If OSHChip is powered from 1.8V to 2.4V</h4>
+
+<ul>
+  <li>OSHChip must be unplugged from the target system <strong>before</strong>
+connecting the programming cable for programming</li>
+  <li>J1 <strong>must</strong> have the jumper installed (this powers OSHChip when
+it is not plugged into the target system)</li>
+  <li>Programming can be performed</li>
+  <li>Debugging can only be done if the program being debugged can operate
+without OSHChip being connected to the rest of the target system</li>
+  <li>After programming is finished, the programming cable <strong>must</strong> be
+disconnected first from OSHChip, and then OSHChip can be plugged
+back into the target system. <strong>Do not</strong> plug it back into the
+target system with the programming cable and programmer still
+attached</li>
+</ul>
+
+<center>
+<img src="/images/OSHChip_CMSIS_DAP_J1.jpg" width="400" /><br />
+</center>
+
+<h2 id="swd-programmerdebuggers-from-other-suppliers">SWD Programmer/Debuggers from other suppliers</h2>
+
+<p>Example SWD programmers include:</p>
+
+<ul>
+  <li>OSHChip_CMSIS_DAP V1.0</li>
+  <li>Segger J-Link</li>
+  <li>Segger J-Link Lite</li>
+  <li>Keil ULink</li>
+  <li>Nordic Semiconductor nRF51-DK</li>
+</ul>
+
+<p>The following have not been tested, but may work using the Keil IDE</p>
+
+<ul>
+  <li>CooCox CoLinkEx</li>
+  <li>PEmicro Multilink</li>
+</ul>
+
+<p>If you do not already have a programmer, when ordering OSHChips you
+should also order an OSHChip_CMSIS_DAP V1.0  It comes with a programming
+cable and an adapter that converts from the 2 by 5 pin
+IDC connector on the end of the cable to a 2 by 2 conector
+that mates with the connector on the top of OSHChip.</p>
+
+<center>
+<img src="/images/SWD_2x5_to_2x2_Adapter.png" width="400" /><br />
+<b>SWD 2x5 to 2x2 Adapter</b>
+</center>
+
+<p><br />
+<br />
+<br /></p>
+
+<h2 id="programmingdebugging-cable-orientation">Programming/Debugging cable orientation</h2>
+
+<h3 id="with-the-adapter">With the adapter</h3>
+
+<center>
+<img src="/images/Cable_Adapter_and_OSHChip.jpg" width="400" /><br />
+<b>Programming cable, adapter, and OSHChip</b>
+</center>
+<p><br />
+<br /></p>
+<center>
+<img src="/images/OSHChip_adapter_DAP.jpg" width="600" /><br />
+<b>OSHChip, Adapter, Cable, and OSHChip_CMSIS_Dap</b>
+</center>
+
+<h3 id="without-the-adapter">Without the adapter</h3>
+
+<p>OSHChip can be programmed with SWD programmers from other suppliers,
+listed above. Provided they have a programming cable with the
+2 by 5 pin IDC connector on the end, with 0.05” pitch, they
+can be used to program and debug OSHChip. (the other common ARM debugger
+cables have a 2 by 10 pin IDC connector on the end, with 0.1”
+pitch, which cannot be used without a suitable conversion from 0.1” to
+0.05” pitch)</p>
+
+<p>To connect the SWD programmer to OSHChip without the adapter, the IDC
+connector must be carefully positioned so that the 4 pins on the top of
+OSHChip fit into the 2 by 2 pins at the red stripe end of the
+connector at the end of the cable. The cable orientation is the same as
+that used when the adapter is available. When attaching the cable to
+OSHChip, just be very careful that the 4 pins from OSHChip go into the 4
+holes in the connector that are closest to the red stripe on the cable.</p>
+
+<p>See the picture below.</p>
+
+<center>
+<img src="/images/OSHChip_connected_without_adapter.jpg" width="300" /><br />
+<b>Programming cable and OSHChip</b>
+</center>
+
+    </div><!-- /.article-wrap -->
+    
+  </article>
+</div><!-- /#index -->
+
+<div class="footer-wrap">
+  <footer>
+    
+
+<span>&copy; 2017 OSHChip. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a> theme.</span>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://oshchip.org/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://oshchip.org/assets/js/scripts.min.js"></script>
+<!-- MathJax -->
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Google Search Box -->
+<script language="Javascript" type="text/javascript">
+  function my_search_google()
+  {
+    var query = document.getElementById("my-google-search").value;
+    window.open("http://google.com/search?q=" + query
+	+ "%20site:" + "http://oshchip.org");
+  }
+</script>
+
+
+          
+
+</body>
+</html>
